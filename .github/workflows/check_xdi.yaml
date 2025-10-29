@@ -16,4 +16,4 @@ jobs:
           pip install xraylarch
       - name: Print version
         run: |
-          python -c "import larch;print(larch.__version__)"
+          python .github/workflows/check_xdi.py
