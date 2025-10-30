@@ -5,5 +5,6 @@ Addition of new XAS standard by PR
 2. Contains energy, and mutrans or mufluor, and iref
 
 ### Checks for submitter
+<!--Checkmate-->
 - [ ] I confirm that I am the data owner and have permission and agree to make the submitted data open
 

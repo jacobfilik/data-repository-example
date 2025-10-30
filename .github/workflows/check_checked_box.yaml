@@ -1,0 +1,17 @@
+on:
+  pull_request:
+    types: [edited, opened, reopened]
+
+# cancel old edit events being processed
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+  
+name: Checkmate
+jobs:
+  validate-checklists:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Validate Checklists
+      uses: roryq/checkmate@master
