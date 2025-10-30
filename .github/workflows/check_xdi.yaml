@@ -1,6 +1,10 @@
 name: Check XDI files using larch
 
-on: [push]
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
   check-files:
@@ -14,6 +18,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install xraylarch
-      - name: Print version
+      - name: Run XDI check
         run: |
           python .github/workflows/check_xdi.py
