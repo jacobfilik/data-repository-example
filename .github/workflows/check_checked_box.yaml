@@ -1,12 +1,17 @@
-name: 'Check terms agreed'
-on: 
+on:
   pull_request:
-    types: [opened, edited]
+    types: [edited, opened, reopened]
 
+# cancel old edit events being processed
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+  
+name: Checkmate
 jobs:
-  task-check:
+  validate-checklists:
     runs-on: ubuntu-latest
     steps:
-      - uses: kentaro-m/task-completed-checker-action@v0.1.2
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+    - uses: actions/checkout@v3
+    - name: Validate Checklists
+      uses: roryq/checkmate@master
