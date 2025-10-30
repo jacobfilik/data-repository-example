@@ -19,8 +19,7 @@ start_time = "start_time"
 unspecified = "unspecified"
 location_key = "location"
 
-# print(out.comments)
-def extract_metadata(path, location):
+def check_metadata(path, location):
     out = xdi.read_xdi(path)
 
     metadata = {location_key : location}
@@ -62,7 +61,5 @@ m = []
 
 for child in p.rglob("*.xdi"):
     if child.is_file():
-        md = extract_metadata(str(child), str(child.relative_to(p)))
-        m.append(md)
+        check_metadata(str(child), str(child.relative_to(p)))
 
-print(m)
